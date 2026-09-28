@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kairali 2026–27 Emailer — Multi-Device Preview &amp; QA Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --kg-forest: #006038;
+      --kg-forest-dark: #003D24;
+      --kg-leaf: #8E9D35;
+      --kg-marigold: #EEB41E;
+      --kg-bronze: #C1882C;
+      --kg-ivory: #F7F4EA;
+      --kg-tan: #D9B98E;
+      --kg-slate: #2C3531;
+      --bg-dark: #141A17;
+      --bg-surface: #1E2622;
+      --border-color: #2F3B35;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0E1310;
+      color: #E2ECE6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation Bar */
+    header {
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background-color: var(--kg-forest);
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .title-text {
+      font-family: 'Gelasio', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #FFF;
+    }
+
+    .subtitle-text {
+      font-size: 12px;
+      color: #8E9D35;
+    }
+
+    /* View Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #121815;
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-view {
+      background: transparent;
+      border: none;
+      color: #A0B2A8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-view:hover {
+      color: #FFF;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-view.active {
+      background: var(--kg-forest);
+      color: #FFF;
+      font-weight: 600;
+    }
+
+    .action-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: #27332D;
+      color: #E2ECE6;
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:hover {
+      background: #33423A;
+      color: #FFF;
+    }
+
+    .btn-primary {
+      background: var(--kg-forest);
+      border-color: #007A48;
+      color: #FFF;
+    }
+    .btn-primary:hover {
+      background: #007A48;
+    }
+
+    /* Main Preview Area */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+      overflow-y: auto;
+      background: radial-gradient(circle at 50% 10%, #17221C 0%, #0E1310 100%);
+    }
+
+    .preview-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      transition: all 0.3s ease;
+    }
+
+    /* Device Frames */
+    .frame-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .frame-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #A0B2A8;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .frame-label span {
+      color: #EEB41E;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+    }
+
+    /* Desktop Frame */
+    .desktop-frame {
+      width: 640px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .desktop-bar {
+      background: #EBE6D8;
+      padding: 8px 12px;
+      border-bottom: 1px solid #D6D0C0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mac-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .mac-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #FF5F56; }
+    .dot-yellow { background: #FFBD2E; }
+    .dot-green { background: #27C93F; }
+
+    .browser-address {
+      background: #FFFFFF;
+      border-radius: 4px;
+      padding: 3px 10px;
+      font-size: 11px;
+      color: #636159;
+      font-family: 'JetBrains Mono', monospace;
+      flex: 1;
+      margin-left: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Mobile Frame */
+    .mobile-frame {
+      width: 375px;
+      height: 750px;
+      background: #FFFFFF;
+      border-radius: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 8px #262E2A, 0 0 0 9px #404E47;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-notch {
+      width: 140px;
+      height: 22px;
+      background: #262E2A;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+      z-index: 10;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      background: #F7F4EA;
+    }
+
+    .desktop-frame iframe {
+      height: 1180px;
+    }
+
+    .mobile-frame iframe {
+      height: 100%;
+      padding-top: 10px;
+    }
+
+    /* Verification Checklist Drawer */
+    .qa-panel {
+      margin-top: 36px;
+      width: 100%;
+      max-width: 900px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .qa-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .qa-header h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .qa-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 18px;
+      color: #B5C6BD;
+      background: #171E1B;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #28332D;
+    }
+
+    .qa-check {
+      color: #27C93F;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .qa-url-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: #25332B;
+      color: #EEB41E;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--kg-forest);
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 999;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive hidden views */
+    .view-desktop-only .mobile-frame-wrapper { display: none !important; }
+    .view-mobile-only .desktop-frame-wrapper { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header>
+    <div class="brand-title">
+      <span class="brand-badge">2026–27 Spec</span>
+      <div>
+        <div class="title-text">Kairali Ayurvedic Group Emailer Preview</div>
+        <div class="subtitle-text">The Ayurvedic Healing Village (KTAHV) &amp; Villa Raag, Agonda</div>
+      </div>
+    </div>
+
+    <!-- View Mode Selector -->
+    <div class="controls">
+      <button class="btn-view" id="btn-both" onclick="setViewMode('both')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Side-by-Side
+      </button>
+      <button class="btn-view active" id="btn-desktop" onclick="setViewMode('desktop')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M6 17h12"/></svg>
+        Desktop (600px)
+      </button>
+      <button class="btn-view" id="btn-mobile" onclick="setViewMode('mobile')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+        Mobile (375px)
+      </button>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="action-btns">
+      <a href="email.html" target="_blank" class="btn-action">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open Standalone HTML
+      </a>
+      <button onclick="copyHtmlToClipboard()" class="btn-action btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Email Code
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Previews -->
+  <main id="main-container" class="view-desktop-only">
+    <div class="preview-container">
+
+      <!-- Desktop View (600px content width) -->
+      <div class="frame-wrapper desktop-frame-wrapper">
+        <div class="frame-label">
+          Desktop Outlook / Web Clients <span>600px Max-Width</span>
+        </div>
+        <div class="desktop-frame">
+          <div class="desktop-bar">
+            <div class="mac-dots">
+              <div class="mac-dot dot-red"></div>
+              <div class="mac-dot dot-yellow"></div>
+              <div class="mac-dot dot-green"></div>
+            </div>
+            <div class="browser-address">https://kairali-documents.vercel.app/?property=all &middot; 2026–27 Rates</div>
+          </div>
+          <iframe src="email.html" title="Desktop Email Preview"></iframe>
+        </div>
+      </div>
+
+      <!-- Mobile View (375px fluid width) -->
+      <div class="frame-wrapper mobile-frame-wrapper">
+        <div class="frame-label">
+          Mobile iOS / Android Clients <span>375px Fluid</span>
+        </div>
+        <div class="mobile-frame">
+          <div class="mobile-notch"></div>
+          <iframe src="email.html" title="Mobile Email Preview"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- QA & Compliance Verification Matrix -->
+    <div class="qa-panel">
+      <div class="qa-header">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#27C93F" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Production Quality Assurance &amp; Link Specification Checklist
+        </h3>
+        <span style="font-size: 12px; color: #8E9D35;">All Requirements Verified</span>
+      </div>
+
+      <div class="qa-grid">
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Sequence Requirement:</strong><br />
+            KTAHV appears FIRST, followed immediately by Villa Raag.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Main Top CTA URL:</strong><br />
+            Points to combined properties rate index:
+            <div class="qa-url-tag">?property=all</div>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>KTAHV Section CTA URL:</strong><br />
+            Direct link to Healing Village document:
+            <div class="qa-url-tag">?property=ahv</div>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Villa Raag Section CTA URL:</strong><br />
+            Direct link to Villa Raag document:
+            <div class="qa-url-tag">?property=villa-raag</div>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>KTAHV Register Compliance:</strong><br />
+            Clinical and physician-led. Strictly zero resort/spa/holiday words.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Interactive Contacts:</strong><br />
+            info@villaraag.com, info@kairali.com (mailto) &amp; +91 9555 156 156 (tel) are clickable.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Email Client Compatibility:</strong><br />
+            Table-based structure, inline CSS, MSO conditionals, VML bulletproof buttons.
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <span class="qa-check">&#10003;</span>
+          <div>
+            <strong>Brand Asset Integrity:</strong><br />
+            Uses supplied logos and approved photography without tracing or recreation.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast">Email HTML copied to clipboard!</div>
+
+  <script>
+    function setViewMode(mode) {
+      const container = document.getElementById('main-container');
+      const btnBoth = document.getElementById('btn-both');
+      const btnDesktop = document.getElementById('btn-desktop');
+      const btnMobile = document.getElementById('btn-mobile');
+
+      btnBoth.classList.remove('active');
+      btnDesktop.classList.remove('active');
+      btnMobile.classList.remove('active');
+      container.className = '';
+
+      if (mode === 'desktop') {
+        container.classList.add('view-desktop-only');
+        btnDesktop.classList.add('active');
+      } else if (mode === 'mobile') {
+        container.classList.add('view-mobile-only');
+        btnMobile.classList.add('active');
+      } else {
+        btnBoth.classList.add('active');
+      }
+    }
+
+    async function copyHtmlToClipboard() {
+      try {
+        const response = await fetch('email.html');
+        const text = await response.text();
+        await navigator.clipboard.writeText(text);
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 3000);
+      } catch (err) {
+        alert('Could not copy automatically. Please open email.html directly to copy the code.');
+      }
+    }
+  </script>
+</body>
+</html>
