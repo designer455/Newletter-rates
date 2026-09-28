@@ -1,108 +1,82 @@
 # Kairali Ayurvedic Group — 2026–27 Rates & Stay Information Emailer
 
-Production-ready, responsive, client-tested HTML emailer announcing 2026–27 rates and stay information for:
-1. **Kairali – The Ayurvedic Healing Village, Palakkad, Kerala (KTAHV)** *(Appears FIRST)*
-2. **Villa Raag, Agonda Beach, South Goa** *(Appears SECOND)*
+Production-ready, executive-level HTML emailer for **Kairali Ayurvedic Group**, designed specifically for direct distribution by the **Director** to esteemed guests, travel partners, and corporate associates.
 
 ---
 
-## 📁 File Structure
+## 🏛️ Design System & Architectural Principles
 
+- **Tone & Register**: Senior executive communication — refined, minimal, calm, and trustworthy. Not a marketing flyer or hotel brochure.
+- **Strict Left-Alignment**: All body content, greeting, paragraphs, contact links, and closing share the exact same left content edge.
+- **Zero Divider Lines**: Content sections breathe through controlled whitespace alone (no HRs, border lines, or decorative rules).
+- **Single Master CTA**: One left-aligned document access button (`VIEW RATES AND DOCUMENTS →`) with subtle 4px rounded corners in Kairali Forest Green (`#006038`).
+- **Subtle Compact Footer**: Light warm ivory background (`#FAF8F3`), approximately 60px high, with clean corporate branding.
+- **Client Compatibility**: Outlook VML bulletproof button, table-based layout, inline CSS, and responsive media queries.
+
+---
+
+## 🖼️ How to Replace the Kairali Logo
+
+### 1. Logo Asset Location
+The emailer references the logo at:
 ```text
-├── email.html                   # Primary production-ready email HTML
-├── preview.html                 # Interactive preview suite (Desktop 600px, Mobile 375px, Side-by-Side)
-├── README.md                    # Documentation & asset replacement instructions
-├── assets/
-│   ├── logos/
-│   │   ├── kairali-logo.png     # Master Kairali Ayurvedic Group logo (health through ayurveda · since 1908)
-│   │   ├── ktahv-logo.png       # The Ayurvedic Healing Village full-colour logo
-│   │   ├── villa-raag-logo.png  # Villa Raag Yoga Sanctuary logo
-│   │   ├── ktahv-logo.svg       # Vector source
-│   │   └── villa-raag-logo.svg  # Vector source
-│   ├── images/
-│   │   ├── ktahv-hero.jpg       # Approved KTAHV facility photography (552px wide display)
-│   │   └── villa-raag-hero.jpg  # Approved Villa Raag sanctuary photography (552px wide display)
-│   └── icons/                   # Supporting iconography assets
-└── images/                      # Workspace source images
+assets/logos/kairali-logo.png
 ```
 
----
+### 2. Recommended Dimensions & Format
+- **Format**: PNG (transparent background) or High-DPI PNG
+- **Display Dimensions in HTML**: `width="138"` and `height="116"`
+- **Original Source File Resolution**: Approximately `1090 × 915 px` (retina 2x/3x crispness)
 
-## ⚙️ Central Configuration Section
+### 3. Option A: In-Place File Replacement (Easiest)
+1. Export your updated logo artwork as a transparent PNG.
+2. Save or overwrite the file directly at:
+   ```bash
+   assets/logos/kairali-logo.png
+   ```
+3. Refresh `preview.html` or `index.html` to confirm the update.
 
-At the top of [`email.html`](file:///Users/varunkairalimac/Documents/Kairali%20Work/Email%20Templete/New%20Rates/email.html), all document links, asset paths, and contact details are centralized:
-
-```html
-<!--
-================================================================================
-KAIRALI EMAIL CONFIGURATION SETTINGS
-================================================================================
-[DOCUMENT LINKS]
-• ALL_RATES_URL:        https://kairali-documents.vercel.app/?property=all
-• KTAHV_RATES_URL:      https://kairali-documents.vercel.app/?property=ahv
-• VILLA_RAAG_RATES_URL: https://kairali-documents.vercel.app/?property=villa-raag
-
-[ASSET PATHS]
-• KAIRALI_GROUP_LOGO:   assets/logos/kairali-logo.png
-• KTAHV_LOGO:           assets/logos/ktahv-logo.png
-• VILLA_RAAG_LOGO:      assets/logos/villa-raag-logo.png
-• KTAHV_HERO_IMAGE:     assets/images/ktahv-hero.jpg
-• VILLA_RAAG_HERO_IMAGE:assets/images/villa-raag-hero.jpg
-
-[CONTACT DETAILS]
-• VILLA_RAAG_EMAIL:     info@villaraag.com
-• KTAHV_EMAIL:          info@kairali.com
-• RESERVATIONS_PHONE:   +91 9555 156 156 (tel:+919555156156)
-================================================================================
--->
-```
+### 4. Option B: Updating the Path in `email.html`
+If using a different file name, hosted CDN URL, or path:
+1. Open [`email.html`](file:///Users/varunkairalimac/Documents/Kairali%20Work/Email%20Templete/New%20Rates/email.html).
+2. Locate the logo block around line 125:
+   ```html
+   <!-- HEADER / KAIRALI LOGO (CENTERED) -->
+   <tr>
+     <td align="center" style="padding: 32px 30px 32px 30px; background-color: #FFFFFF;">
+       <a href="https://kairali-documents.vercel.app/?property=all" target="_blank" style="text-decoration: none; display: inline-block;">
+         <img src="assets/logos/YOUR-NEW-LOGO.png" alt="Kairali Ayurvedic Group" width="138" height="116" border="0" style="display: block; width: 138px; max-width: 138px; height: auto; margin: 0 auto;" />
+       </a>
+     </td>
+   </tr>
+   ```
+3. Update `src="..."` and ensure `width`, `height`, and `alt` are accurately specified.
 
 ---
 
-## 🔄 How to Update Document URLs
+## 🖥️ Local Preview & QA Suite
 
-If your rates documents or landing pages move to a custom domain (e.g. `kairali.com/rates/`):
-
-1. **Combined / All Rates Link**:
-   Search for `https://kairali-documents.vercel.app/?property=all` in `email.html` and replace with your new URL. (Present in the master header CTA and group logo link).
-2. **KTAHV Rates Link**:
-   Search for `https://kairali-documents.vercel.app/?property=ahv` in `email.html` and replace with your new URL. (Present in the KTAHV button and hero image link).
-3. **Villa Raag Rates Link**:
-   Search for `https://kairali-documents.vercel.app/?property=villa-raag` in `email.html` and replace with your new URL. (Present in the Villa Raag button and hero image link).
-
----
-
-## 🖼️ How to Replace Logos and Images
-
-### 1. Hosted CDN / Web Paths for Deployment
-Before sending through an ESP (Mailchimp, Brevo, Sendgrid, Klaviyo, HubSpot, etc.), upload the assets folder to your CDN or server and update the `src=""` attributes:
-
-| Current Local Asset Path | Suggested Production CDN URL | Recommended Display Dimensions |
-| :--- | :--- | :--- |
-| `assets/logos/kairali-logo.png` | `https://cdn.kairali.com/emails/logos/kairali-logo.png` | `156px` width, auto height |
-| `assets/logos/ktahv-logo.png` | `https://cdn.kairali.com/emails/logos/ktahv-logo.png` | `144px` width, auto height |
-| `assets/logos/villa-raag-logo.png` | `https://cdn.kairali.com/emails/logos/villa-raag-logo.png` | `200px` width, auto height |
-| `assets/images/ktahv-hero.jpg` | `https://cdn.kairali.com/emails/images/ktahv-hero.jpg` | `552px` – `600px` width |
-| `assets/images/villa-raag-hero.jpg` | `https://cdn.kairali.com/emails/images/villa-raag-hero.jpg` | `552px` – `600px` width |
-
-### 2. Dropping New Local Files
-If you replace files locally, simply overwrite the existing files in `assets/logos/` or `assets/images/` keeping the same filenames.
+- **Interactive Multi-Device Suite**: Open `preview.html` or `index.html` in any browser to toggle between **Desktop (600px)**, **Mobile (375px)**, and **Side-by-Side** views.
+- **Local Web Server**:
+  ```bash
+  python3 -m http.server 4321
+  ```
+  Visit [http://127.0.0.1:4321/index.html](http://127.0.0.1:4321/index.html) to view.
+- **Copy Email Code**: Click the **"Copy Email Code"** button in the preview suite top bar to copy the raw HTML directly to your clipboard for your ESP (Mailchimp, HubSpot, Salesforce Marketing Cloud, etc.).
 
 ---
 
-## 📱 Testing & QA
+## 📋 Exact Content Hierarchy & Links
 
-Open [`preview.html`](file:///Users/varunkairalimac/Documents/Kairali%20Work/Email%20Templete/New%20Rates/preview.html) in any modern browser:
-- **Desktop (600px)**: Verifies Outlook and desktop webmail rendering.
-- **Mobile (375px fluid)**: Verifies touch-target sizes, fluid image scaling, and single-column stacking.
-- **Side-by-Side**: Allows simultaneous comparison.
-- **Copy Email Code**: 1-click clipboard export for pasting directly into your email delivery tool.
-
----
-
-## 🛡️ Email Client Compatibility Highlights
-
-- **Outlook (Windows Desktop)**: Full table structure with `mso-line-height-rule: exactly;`, conditional XML namespace tags, and VML `<v:roundrect>` bulletproof pill buttons.
-- **Gmail (Web & Mobile)**: Inline styles on every text element; no reliance on external stylesheets for critical layout; styles scoped to prevent clipping.
-- **Apple Mail & iOS**: Retina 2x image rendering, fluid `@media` queries down to 320px.
-- **Dark Mode Friendly**: Contrasting neutral card borders and backgrounds ensure high readability across both light and dark client themes.
+1. **Official Kairali Group Logo** (Centered)
+2. **Greeting**: `Dear Guest and Travel Partner,` (Left-aligned)
+3. **Introductory Notice**: `We’re pleased to share our 2026–27 rates for Villa Raag, Agonda, Goa and Kairali – The Ayurvedic Healing Village, Palakkad, Kerala.`
+4. **Lead-in**: `Explore room rates, programmes and stay information in one place:`
+5. **Master CTA**: `VIEW RATES AND DOCUMENTS →` (Links to `https://kairali-documents.vercel.app/?property=all`)
+6. **Tariff Validity**: Stays covered through 30 September 2027.
+7. **Contact Channels**:
+   - Villa Raag: [`info@villaraag.com`](mailto:info@villaraag.com)
+   - The Ayurvedic Healing Village: [`info@kairali.com`](mailto:info@kairali.com)
+   - Central Reservations: [`+91 9555 156 156`](tel:+919555156156)
+8. **Closing**: `We look forward to welcoming you.` / `Warm regards,` / `Kairali Ayurvedic Group` / `Villa Raag & The Ayurvedic Healing Village`
+9. **Subtle Corporate Signature Footer**: Minimal, light warm ivory background.
