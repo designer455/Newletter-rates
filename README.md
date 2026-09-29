@@ -80,3 +80,14 @@ If using a different file name, hosted CDN URL, or path:
    - Central Reservations: [`+91 9555 156 156`](tel:+919555156156)
 8. **Closing**: `We look forward to welcoming you.` / `Warm regards,` / `Kairali Ayurvedic Group` / `Villa Raag & The Ayurvedic Healing Village`
 9. **Subtle Corporate Signature Footer**: Minimal, light warm ivory background.
+10. **Social Media & Websites Strip**:
+    - **Websites** (with globe icon & clickable text):
+      - Kairali - The Ayurvedic Healing Village: [`www.ktahv.com`](http://www.ktahv.com/)
+      - Villa Raag: [`villaraag.com`](https://villaraag.com/)
+    - **Social Media** (crisp brand icons with direct links):
+      - Instagram: [`@kairaliayurvedichealingvillage`](https://www.instagram.com/kairaliayurvedichealingvillage/)
+      - Facebook: [`@KairaliGroup`](https://www.facebook.com/KairaliGroup)
+      - Twitter (X): [`@Kairali_Group`](https://twitter.com/Kairali_Group)
+      - LinkedIn: [`Kairali Ayurvedic Group`](https://www.linkedin.com/company/kairali-ayurvedic-group)
+      - YouTube: [`@kairaliayurvedagroup`](https://www.youtube.com/user/kairaliayurvedagroup)
+    - **Asset Storage**: High-DPI transparent vector & PNG icons stored in `assets/icons/`.
